@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "CarkitContext": "Server=DESKTOP;Database=carkit;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}

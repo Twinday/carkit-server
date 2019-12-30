@@ -6,14 +6,19 @@ using System.Text;
 namespace Carkit.Data.Models
 {
     /// <summary>
-    /// Роль.
+    /// Производитель деталей.
     /// </summary>
-    public class Role : BaseModel
+    public class ProducerDetails : BaseModel
     {
         /// <summary>
-        /// Название роли.
+        /// Название.
         /// </summary>
         [Required]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Уровень доверия (целое число).
+        /// </summary>
+        public int TrustLevel { get; set; }
     }
 }

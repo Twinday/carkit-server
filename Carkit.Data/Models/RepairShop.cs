@@ -6,14 +6,14 @@ using System.Text;
 namespace Carkit.Data.Models
 {
     /// <summary>
-    /// Роль.
+    /// Автомастерская.
     /// </summary>
-    public class Role : BaseModel
+    public class RepairShop : BaseModel
     {
         /// <summary>
-        /// Название роли.
+        /// Адрес.
         /// </summary>
         [Required]
-        public string Name { get; set; }
+        public string Address { get; set; }
     }
 }

@@ -5,12 +5,18 @@ using System.Text;
 namespace Carkit.Data.Models
 {
     /// <summary>
-    /// Базовая модель.
+    /// Базовая Id модель.
     /// </summary>
-    public class BaseModel
+    public class BaseIdModel
     {
         public int Id { get; set; }
+    }
 
+    /// <summary>
+    /// Базовая доменная модель.
+    /// </summary>
+    public class BaseModel : BaseIdModel
+    {
         public bool IsDeleted { get; set; }
     }
 }
