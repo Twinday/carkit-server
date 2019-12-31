@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Carkit.Services
 {
-	public class DataModule : IModule
+	public class ServiceModule : IModule
 	{
 		public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 		{

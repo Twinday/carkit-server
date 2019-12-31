@@ -95,13 +95,13 @@ namespace Carkit.Data
             modelBuilder.Entity<Role>()
                 .HasData(new[]
                 {
-                    new Role { Id = 0, IsDeleted = false, Name = "admin" },
-                    new Role {Id = 1, IsDeleted = false, Name = "visitor"}
+                    new Role { Id = 1, IsDeleted = false, Name = "admin" },
+                    new Role {Id = 2, IsDeleted = false, Name = "visitor"}
                 });
 
             modelBuilder.Entity<User>().HasData(new User
             {
-                Id = 0, IsDeleted = false, Name = "Администратор", Password = "111", Phone = "111", RoleId = 0
+                Id = 1, IsDeleted = false, Name = "Администратор", Password = "111", Phone = "111", RoleId = 1
             });
         }
     }
