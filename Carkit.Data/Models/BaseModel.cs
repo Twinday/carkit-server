@@ -15,7 +15,7 @@ namespace Carkit.Data.Models
     /// <summary>
     /// Базовая доменная модель.
     /// </summary>
-    public class BaseModel : BaseIdModel
+    public partial class BaseModel : BaseIdModel
     {
         public bool IsDeleted { get; set; }
     }

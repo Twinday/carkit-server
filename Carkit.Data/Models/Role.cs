@@ -8,7 +8,7 @@ namespace Carkit.Data.Models
     /// <summary>
     /// Роль.
     /// </summary>
-    public class Role : BaseModel
+    public partial class Role : BaseModel
     {
         /// <summary>
         /// Название роли.
