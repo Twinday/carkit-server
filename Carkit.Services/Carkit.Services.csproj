@@ -12,14 +12,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Carkit.Data\Carkit.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DtoModels\" />
   </ItemGroup>
 
 </Project>

@@ -21,9 +21,12 @@ namespace Carkit.Web
         public Startup(IConfiguration configuration)
         {
             //Configuration = configuration;
-            List<IModule> modules = new List<IModule>();
-            modules.Add(new DataModule());
-            modules.Add(new ServiceModule());
+            List<IModule> modules = new List<IModule> 
+            { 
+                new DataModule(),
+                new ServiceModule(),
+                new WebModule()
+            };
 
             Modules = new ModuleStartup(modules);
 

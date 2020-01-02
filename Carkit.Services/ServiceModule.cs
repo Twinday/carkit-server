@@ -1,4 +1,5 @@
-﻿using Carkit.Data;
+﻿using AutoMapper;
+using Carkit.Data;
 using Carkit.Services.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,10 @@ namespace Carkit.Services
 	{
 		public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 		{
+			services.AddScoped<IRepairShopService, RepairShopService>();
+
+			services.AddAutoMapper(typeof(MappingProfile));
+
 			services.AddScoped(typeof(IService<>), typeof(BaseService<>));
 
 		}

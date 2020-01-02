@@ -52,7 +52,7 @@ namespace Carkit.Services.Services
 		public virtual async Task DeleteAsync(int id)
 		{
 			TEntity item = await _repository.GetByIDAsync(id);
-			//item.IsDeleted = true;
+			item.IsDeleted = true;
 			_repository.Delete(item);
 			await _unitOfWork.SaveAsync();
 		}

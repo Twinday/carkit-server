@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Carkit.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Carkit.Data.Models
+namespace Carkit.Services.DtoModels
 {
     /// <summary>
-    /// Автомастерская.
+    /// Dto модель автомастерской.
     /// </summary>
-    public partial class RepairShop : BaseModel
+    public class RepairShopDto : BaseIdModel
     {
         /// <summary>
         /// Адрес.
