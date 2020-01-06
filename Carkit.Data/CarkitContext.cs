@@ -9,9 +9,18 @@ namespace Carkit.Data
     public class CarkitContext : DbContext
     {
         public DbSet<ProducerDetails> ProducersDetails { get; set; }
+        public DbSet<Detail> Details { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<RepairShop> RepairShops { get; set; }
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<ModelCar> ModelCars { get; set; }
+        public DbSet<CarCard> CarCards { get; set; }
+        public DbSet<Work> Works { get; set; }
+        public DbSet<WorkEffort> WorkEfforts { get; set; }
+        public DbSet<LinkedDetail> LinkedDetails { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<WorkForCar> WorkForCars { get; set; }
 
         public CarkitContext(DbContextOptions<CarkitContext> options)
                         : base(options)
@@ -27,6 +36,51 @@ namespace Carkit.Data
             base.OnModelCreating(modelBuilder);
 
             SettingPresetData(modelBuilder);
+
+            // WorkEffort
+            modelBuilder.Entity<WorkEffort>()
+                .HasKey(t => new { t.WorkId, t.ModelCarId });
+
+            modelBuilder.Entity<WorkEffort>()
+                .HasOne(sc => sc.Work)
+                .WithMany(s => s.WorkEfforts)
+                .HasForeignKey(sc => sc.WorkId);
+
+            modelBuilder.Entity<WorkEffort>()
+                .HasOne(sc => sc.Model)
+                .WithMany(c => c.WorkEfforts)
+                .HasForeignKey(sc => sc.ModelCarId);
+
+
+            // LinkedDetail
+            modelBuilder.Entity<LinkedDetail>()
+                .HasKey(t => new { t.DetailId, t.ModelCarId });
+
+            modelBuilder.Entity<LinkedDetail>()
+                .HasOne(sc => sc.Detail)
+                .WithMany(s => s.LinkedDetails)
+                .HasForeignKey(sc => sc.DetailId);
+
+            modelBuilder.Entity<LinkedDetail>()
+                .HasOne(sc => sc.Model)
+                .WithMany(c => c.LinkedDetails)
+                .HasForeignKey(sc => sc.ModelCarId);
+
+
+            // WorkForCar
+            modelBuilder.Entity<WorkForCar>()
+                .HasKey(t => new { t.WorkId, t.CarCardId });
+
+            modelBuilder.Entity<WorkForCar>()
+                .HasOne(sc => sc.Work)
+                .WithMany(s => s.WorkForCars)
+                .HasForeignKey(sc => sc.WorkId);
+
+            modelBuilder.Entity<WorkForCar>()
+                .HasOne(sc => sc.CarCard)
+                .WithMany(c => c.WorkForCars)
+                .HasForeignKey(sc => sc.CarCardId);
+
 
             /*modelBuilder.Entity<CheckingAccount>()
                 .HasOne(a => a.Bank)
@@ -103,6 +157,29 @@ namespace Carkit.Data
             {
                 Id = 1, IsDeleted = false, Name = "Администратор", Password = "111", Phone = "111", RoleId = 1
             });
+
+            modelBuilder.Entity<Unit>().HasData(new[]
+            {
+                new Unit { Id = 1, IsDeleted = false, Name = "шт.", FullName = "штука" },
+                new Unit { Id = 2, IsDeleted = false, Name = "л.", FullName = "литр" }
+            });
+
+
+
+            // test
+            modelBuilder.Entity<Producer>()
+                .HasData(new Producer
+                {
+                    Id = 1,
+                    IsDeleted = false,
+                    Name = "BMW"
+                });
+
+            modelBuilder.Entity<ModelCar>()
+                .HasData(new ModelCar
+                { 
+                    Id = 1, IsDeleted = false, Name = "X6", ProducerId = 1
+                });
         }
     }
 }

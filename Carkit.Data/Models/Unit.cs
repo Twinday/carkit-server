@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Carkit.Data.Models
 {
     /// <summary>
-    /// Производитель деталей.
+    /// Единицы измерения.
     /// </summary>
-    public partial class ProducerDetails : BaseModel
+    public partial class Unit : BaseModel
     {
         /// <summary>
         /// Название.
         /// </summary>
-        [Required]
         public string Name { get; set; }
 
         /// <summary>
-        /// Уровень доверия (целое число).
+        /// Полное название.
         /// </summary>
-        public int TrustLevel { get; set; }
+        public string FullName { get; set; }
     }
 }

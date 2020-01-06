@@ -8,7 +8,7 @@ namespace Carkit.Data.Models
     /// <summary>
     /// Пользователь.
     /// </summary>
-    public class User : BaseModel
+    public partial class User : BaseModel
     {
         /// <summary>
         /// Имя.

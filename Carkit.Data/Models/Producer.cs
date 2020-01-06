@@ -6,9 +6,9 @@ using System.Text;
 namespace Carkit.Data.Models
 {
     /// <summary>
-    /// Производитель деталей.
+    /// Производитель авто.
     /// </summary>
-    public partial class ProducerDetails : BaseModel
+    public partial class Producer : BaseModel
     {
         /// <summary>
         /// Название.
@@ -17,8 +17,8 @@ namespace Carkit.Data.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Уровень доверия (целое число).
+        /// Страна.
         /// </summary>
-        public int TrustLevel { get; set; }
+        public string County { get; set; }
     }
 }
