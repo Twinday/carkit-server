@@ -13,20 +13,15 @@ namespace Carkit.Data.Repository
 
         protected override IRepository<TEntity> GetRepositoryInstance<TEntity>()
         {
-            if (typeof(TEntity) == typeof(Role))
-                return ((IRepository<TEntity>)new RoleRepository(_context));
+            if (typeof(TEntity) == typeof(Detail))
+                return ((IRepository<TEntity>)new DetailRepository(_context));
 
-            /*if (typeof(TEntity) == typeof(Material))
-                return ((IRepository<TEntity>)new MaterialRepository(_context));
+            if (typeof(TEntity) == typeof(Work))
+                return ((IRepository<TEntity>)new WorkRepository(_context));
 
-            if (typeof(TEntity) == typeof(Company))
-                return ((IRepository<TEntity>)new CompanyRepository(_context));
+            if (typeof(TEntity) == typeof(WorkForCar))
+                return ((IRepository<TEntity>)new WorkForCarRepository(_context));
 
-            if (typeof(TEntity) == typeof(Warehouse))
-                return ((IRepository<TEntity>)new WarehouseRepository(_context));
-
-            if (typeof(TEntity) == typeof(Person))
-                return ((IRepository<TEntity>)new PersonRepository(_context));*/
 
             return base.GetRepositoryInstance<TEntity>();
         }

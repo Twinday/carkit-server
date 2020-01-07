@@ -16,11 +16,14 @@ namespace Carkit.Data
         public DbSet<Producer> Producers { get; set; }
         public DbSet<ModelCar> ModelCars { get; set; }
         public DbSet<CarCard> CarCards { get; set; }
+        public DbSet<Car> Cars { get; set; }
         public DbSet<Work> Works { get; set; }
         public DbSet<WorkEffort> WorkEfforts { get; set; }
         public DbSet<LinkedDetail> LinkedDetails { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<WorkForCar> WorkForCars { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<LinkedOrderDetail> LinkedOrderDetails { get; set; }
 
         public CarkitContext(DbContextOptions<CarkitContext> options)
                         : base(options)
@@ -68,7 +71,7 @@ namespace Carkit.Data
 
 
             // WorkForCar
-            modelBuilder.Entity<WorkForCar>()
+            /*modelBuilder.Entity<WorkForCar>()
                 .HasKey(t => new { t.WorkId, t.CarCardId });
 
             modelBuilder.Entity<WorkForCar>()
@@ -79,7 +82,7 @@ namespace Carkit.Data
             modelBuilder.Entity<WorkForCar>()
                 .HasOne(sc => sc.CarCard)
                 .WithMany(c => c.WorkForCars)
-                .HasForeignKey(sc => sc.CarCardId);
+                .HasForeignKey(sc => sc.CarCardId);*/
 
 
             /*modelBuilder.Entity<CheckingAccount>()

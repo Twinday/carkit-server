@@ -38,5 +38,7 @@ namespace Carkit.Data.Models
         /// Роль.
         /// </summary>
         public virtual Role Role { get; set; }
+
+        public virtual List<Car> Cars { get; set; }
     }
 }

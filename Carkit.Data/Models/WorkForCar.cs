@@ -10,11 +10,6 @@ namespace Carkit.Data.Models
     public partial class WorkForCar : BaseModel
     {
         /// <summary>
-        /// Идентификатор работы.
-        /// </summary>
-        public int WorkId { get; set; }
-
-        /// <summary>
         /// Идентификатор карточки авто.
         /// </summary>
         public int CarCardId { get; set; }
@@ -25,9 +20,9 @@ namespace Carkit.Data.Models
         public int Kilometrage { get; set; }
 
         /// <summary>
-        /// Вид работы.
+        /// Виды работ, которые рекомендуется провести.
         /// </summary>
-        public virtual Work Work { get; set; }
+        public virtual List<Work> Works { get; set; }
 
         /// <summary>
         /// Карточка авто.

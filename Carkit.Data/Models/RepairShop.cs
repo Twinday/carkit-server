@@ -15,5 +15,10 @@ namespace Carkit.Data.Models
         /// </summary>
         [Required]
         public string Address { get; set; }
+
+        /// <summary>
+        /// Список заказов для автомастерской.
+        /// </summary>
+        public virtual List<Order> Orders { get; set; }
     }
 }

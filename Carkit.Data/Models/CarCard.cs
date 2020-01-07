@@ -30,5 +30,7 @@ namespace Carkit.Data.Models
         public virtual ModelCar Model { get; set; }
 
         public virtual List<WorkForCar> WorkForCars { get; set; }
+
+        public virtual List<Car> Cars { get; set; }
     }
 }

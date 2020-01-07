@@ -47,6 +47,6 @@ namespace Carkit.Data.Models
         /// <summary>
         /// Единица измерения.
         /// </summary>
-        public Unit Unit { get; set; }
+        public virtual Unit Unit { get; set; }
     }
 }

@@ -8,21 +8,22 @@ using System.Threading.Tasks;
 
 namespace Carkit.Data.Repository
 {
-    internal class RoleRepository : Repository<Role>
+    class WorkForCarRepository : Repository<WorkForCar>
     {
-        public RoleRepository(DbContext context) : base(context)
+        public WorkForCarRepository(DbContext context) : base(context)
         {
         }
 
-        public override Task<Role> GetByIDAsync(object id)
+        public override Task<WorkForCar> GetByIDAsync(object id)
         {
             return IncludeQueryable(dbSet)
                 .FirstOrDefaultAsync(itm => Equals(itm.Id, id));
         }
 
-        protected override IQueryable<Role> IncludeQueryable(IQueryable<Role> query)
+        protected override IQueryable<WorkForCar> IncludeQueryable(IQueryable<WorkForCar> query)
         {
-            return query;
+            return query
+                .Include(q => q.CarCard);
         }
     }
 }
