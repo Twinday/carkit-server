@@ -45,5 +45,10 @@ namespace Carkit.Data.Models
         /// Автомастерская.
         /// </summary>
         public virtual RepairShop RepairShop { get; set; }
+
+        /// <summary>
+        /// Детали в заказе.
+        /// </summary>
+        public virtual List<LinkedOrderDetail> LinkedOrderDetails { get; set; }
     }
 }

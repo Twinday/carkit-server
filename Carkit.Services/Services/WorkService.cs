@@ -41,7 +41,7 @@ namespace Carkit.Services.Services
             var otherWorks = new List<WorkListView>();
             foreach (var work in searchResult.Items)
             {
-                if (worksForCar.Works.Any(q => q.Id == work.Id))
+                if (worksForCar.RecomendedWorks.Any(q => q.Id == work.Id))
                     recomendedWorks.Add(work);
                 else
                     otherWorks.Add(work);

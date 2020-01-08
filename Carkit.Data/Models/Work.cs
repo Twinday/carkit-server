@@ -25,6 +25,6 @@ namespace Carkit.Data.Models
         public virtual List<Detail> Details { get; set; }
 
         public virtual List<WorkEffort> WorkEfforts { get; set; }
-        public virtual List<WorkForCar> WorkForCars { get; set; }
+        public virtual List<LinkedWorkForCarWork> RecomendedWorks { get; set; }
     }
 }

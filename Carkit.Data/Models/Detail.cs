@@ -36,6 +36,8 @@ namespace Carkit.Data.Models
 
         public virtual List<LinkedDetail> LinkedDetails { get; set; }
 
+        public virtual List<LinkedOrderDetail> LinkedOrderDetails { get; set; }
+
         public virtual Work Work { get; set; }
     }
 }

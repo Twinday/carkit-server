@@ -24,6 +24,7 @@ namespace Carkit.Data
         public DbSet<WorkForCar> WorkForCars { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<LinkedOrderDetail> LinkedOrderDetails { get; set; }
+        public DbSet<LinkedWorkForCarWork> RecomendedWorks { get; set; }
 
         public CarkitContext(DbContextOptions<CarkitContext> options)
                         : base(options)
@@ -68,6 +69,36 @@ namespace Carkit.Data
                 .HasOne(sc => sc.Model)
                 .WithMany(c => c.LinkedDetails)
                 .HasForeignKey(sc => sc.ModelCarId);
+
+            // LinkedOrderDetail
+            modelBuilder.Entity<LinkedOrderDetail>()
+                .HasKey(t => new { t.DetailId, t.OrderId });
+
+            modelBuilder.Entity<LinkedOrderDetail>()
+                .HasOne(sc => sc.Detail)
+                .WithMany(s => s.LinkedOrderDetails)
+                .HasForeignKey(sc => sc.DetailId);
+
+            modelBuilder.Entity<LinkedOrderDetail>()
+                .HasOne(sc => sc.Order)
+                .WithMany(c => c.LinkedOrderDetails)
+                .HasForeignKey(sc => sc.OrderId);
+
+
+            // LinkedWorkForCarWork
+            modelBuilder.Entity<LinkedWorkForCarWork>()
+                .HasKey(t => new { t.WorkForCarId, t.WorkId });
+
+            modelBuilder.Entity<LinkedWorkForCarWork>()
+                .HasOne(sc => sc.WorkForCar)
+                .WithMany(s => s.RecomendedWorks)
+                .HasForeignKey(sc => sc.WorkForCarId);
+
+            modelBuilder.Entity<LinkedWorkForCarWork>()
+                .HasOne(sc => sc.Work)
+                .WithMany(c => c.RecomendedWorks)
+                .HasForeignKey(sc => sc.WorkId);
+
 
 
             // WorkForCar

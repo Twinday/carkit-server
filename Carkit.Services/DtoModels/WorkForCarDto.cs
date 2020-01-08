@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Carkit.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Carkit.Data.Models
+namespace Carkit.Services.DtoModels
 {
     /// <summary>
-    /// Модель авто с пробегом и рекомендованными работами.
+    /// Дто - модель авто с пробегом.
     /// </summary>
-    public partial class WorkForCar : BaseModel
+    public class WorkForCarDto : BaseIdModel
     {
         /// <summary>
         /// Идентификатор карточки авто.
@@ -22,11 +23,6 @@ namespace Carkit.Data.Models
         /// <summary>
         /// Виды работ, которые рекомендуется провести.
         /// </summary>
-        public virtual List<LinkedWorkForCarWork> RecomendedWorks { get; set; }
-
-        /// <summary>
-        /// Карточка авто.
-        /// </summary>
-        public virtual CarCard CarCard { get; set; }
+        public virtual List<RecomendedWorkDto> RecomendedWorks { get; set; }
     }
 }

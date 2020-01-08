@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Carkit.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Carkit.Data.Models
+namespace Carkit.Services.DtoModels
 {
     /// <summary>
-    /// Детали для заказа.
+    /// Связынные детали с заказом.
     /// </summary>
-    public partial class LinkedOrderDetail : BaseModel
+    public class LinkedOrderDetailDto : BaseIdModel
     {
         /// <summary>
         /// Идентификатор заказа.
@@ -30,20 +31,5 @@ namespace Carkit.Data.Models
         public int UnitId { get; set; }
 
         //public string Status { get; set; }
-
-        /// <summary>
-        /// Единица измерения.
-        /// </summary>
-        public virtual Unit Unit { get; set; }
-
-        /// <summary>
-        /// Заказ.
-        /// </summary>
-        public virtual Order Order { get; set; }
-
-        /// <summary>
-        /// Деталь.
-        /// </summary>
-        public virtual Detail Detail { get; set; }
     }
 }
