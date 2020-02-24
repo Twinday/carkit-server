@@ -63,7 +63,9 @@ namespace Carkit.Services
 
         private void CarMap()
         {
-
+            CreateMap<CarCard, CarCardView>()
+                .ForMember(q => q.Name, o => o.MapFrom(s => s.Model.Name))
+                .ForMember(q => q.Producer, o => o.MapFrom(s => s.Model.Producer.Name));
         }
 
         private void RecomendedWork()

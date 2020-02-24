@@ -210,9 +210,63 @@ namespace Carkit.Data
                 });
 
             modelBuilder.Entity<ModelCar>()
-                .HasData(new ModelCar
+                .HasData(new[]
+                {
+                    new ModelCar { Id = 1, IsDeleted = false, Name = "X6", ProducerId = 1 },
+                    new ModelCar { Id = 2, IsDeleted = false, Name = "730", ProducerId = 1 }
+                });
+
+            modelBuilder.Entity<CarCard>()
+                .HasData(new[] 
+                {
+                    new CarCard { Id = 1, IsDeleted = false, ModelCarId = 1, Year = 2013 },
+                    new CarCard { Id = 2, IsDeleted = false, ModelCarId = 2, Year = 2015 },
+                    new CarCard { Id = 3, IsDeleted = false, ModelCarId = 1, Year = 2020 },
+                    new CarCard { Id = 4, IsDeleted = false, ModelCarId = 2, Year = 2019 }
+                });
+
+            modelBuilder.Entity<RepairShop>()
+                .HasData(new[]
                 { 
-                    Id = 1, IsDeleted = false, Name = "X6", ProducerId = 1
+                    new RepairShop { Id = 1, IsDeleted = false, Address = "Какая-то адресс" }
+                });
+
+            modelBuilder.Entity<ProducerDetails>()
+                .HasData(new[]
+                { 
+                    new ProducerDetails { Id = 1, IsDeleted = false, Name = "Производитель1", TrustLevel = 10 },
+                    new ProducerDetails { Id = 2, IsDeleted = false, Name = "Производитель2", TrustLevel = 8 },
+                    new ProducerDetails { Id = 3, IsDeleted = false, Name = "Производитель3", TrustLevel = 7 },
+                    new ProducerDetails { Id = 4, IsDeleted = false, Name = "Производитель4", TrustLevel = 5 }
+                });
+
+            modelBuilder.Entity<Work>()
+                .HasData(new[]
+                {
+                    new Work { Id = 1, IsDeleted = false, Name = "Замена колодок", Hours = 4 },
+                    new Work { Id = 2, IsDeleted = false, Name = "Замена масла", Hours = 0.25 },
+                    new Work { Id = 3, IsDeleted = false, Name = "Смена резины", Hours = 2 },
+                    new Work { Id = 4, IsDeleted = false, Name = "Покраска", Hours = 24 }
+                });
+
+            modelBuilder.Entity<Detail>()
+                .HasData(new[]
+                {
+                    new Detail { Id = 1, IsDeleted = false, Name = "Масло 2", WorkId = 2, ProducerDetailsId = 2, Cost = 200 },
+                    new Detail { Id = 2, IsDeleted = false, Name = "Масло 3", WorkId = 2, ProducerDetailsId = 3, Cost = 300 },
+                    new Detail { Id = 3, IsDeleted = false, Name = "Масло 1", WorkId = 2, ProducerDetailsId = 1, Cost = 500 },
+                    new Detail { Id = 4, IsDeleted = false, Name = "Зимняя резина", WorkId = 3, ProducerDetailsId = 4, Cost = 2000 },
+                    new Detail { Id = 5, IsDeleted = false, Name = "Краска", WorkId = 4, ProducerDetailsId = 2, Cost = 25000 },
+                });
+
+            modelBuilder.Entity<LinkedDetail>()
+                .HasData(new[]
+                { 
+                    new LinkedDetail { Id = 1, IsDeleted = false, DetailId = 1, Count = 1, ModelCarId = 1, UnitId = 1, IsOriginal = true },
+                    new LinkedDetail { Id = 2, IsDeleted = false, DetailId = 2, Count = 1, ModelCarId = 1, UnitId = 1, IsOriginal = false },
+                    new LinkedDetail { Id = 3, IsDeleted = false, DetailId = 3, Count = 1, ModelCarId = 1, UnitId = 1, IsOriginal = false },
+
+                    new LinkedDetail { Id = 2, IsDeleted = false, DetailId = 2, Count = 1, ModelCarId = 2, UnitId = 1, IsOriginal = true }
                 });
         }
     }
