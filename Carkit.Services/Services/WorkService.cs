@@ -31,7 +31,12 @@ namespace Carkit.Services.Services
         /// <returns></returns>
         public async Task<WorkSearchResult> GetLinkedDetailsForModelCar(SearchResult<WorkListView> searchResult, WorkSearchData search)
         {
-            searchResult.Items.ForEach(q => q.Details.ForEach(s => s.ModelCarIds.Where(w => w == search.ModelCarId)));
+            var items = searchResult.Items.Select(q => new WorkListView
+            {
+                Id = q.Id,
+                Name = q.Name,
+                Details = q.Details.Where(s => s.ModelCarIds.Any(w => w == search.ModelCarId)).ToList()
+            });
 
             var workForCarRepository = _unitOfWork.GetRepository<WorkForCar>();
             var worksForCar = (await workForCarRepository.GetAsync(q => q.CarCard != null && q.CarCard.ModelCarId == search.ModelCarId 
@@ -39,9 +44,9 @@ namespace Carkit.Services.Services
 
             var recomendedWorks = new List<WorkListView>();
             var otherWorks = new List<WorkListView>();
-            foreach (var work in searchResult.Items)
+            foreach (WorkListView work in items)
             {
-                if (worksForCar.RecomendedWorks.Any(q => q.Id == work.Id))
+                if (worksForCar != null && worksForCar.RecomendedWorks.Any(q => q.Id == work.Id))
                     recomendedWorks.Add(work);
                 else
                     otherWorks.Add(work);

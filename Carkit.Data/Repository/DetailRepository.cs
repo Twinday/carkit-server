@@ -23,7 +23,8 @@ namespace Carkit.Data.Repository
         protected override IQueryable<Detail> IncludeQueryable(IQueryable<Detail> query)
         {
             return query
-                .Include(q => q.Producer);
+                .Include(q => q.Producer)
+                .Include(q => q.LinkedDetails);
         }
     }
 }

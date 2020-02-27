@@ -24,6 +24,7 @@ namespace Carkit.Data.Repository
         {
             return query
                 .Include(q => q.Details)
+                    .ThenInclude(q => q.LinkedDetails)
                 .Include(q => q.WorkEfforts);
         }
     }

@@ -34,7 +34,7 @@ namespace Carkit.Web.Controllers
         /// </summary>
         /// <param name="search"></param>
         /// <returns></returns>
-        [HttpGet("/details")]
+        [HttpGet("details")]
         public async Task<ActionResult<WorkSearchResult>> Get([FromQuery] WorkSearchData search)
         {
             var result = await _service.SearchAsync<WorkListView>(search);
