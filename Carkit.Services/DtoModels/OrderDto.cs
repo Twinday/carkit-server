@@ -23,13 +23,10 @@ namespace Carkit.Services.DtoModels
         public DateTime Date { get; set; }
 
         /// <summary>
-        /// Продолжительность обслуживания.
-        /// </summary>
-        public double TimePeriod { get; set; }
-
-        /// <summary>
         /// Стоимость.
         /// </summary>
         public decimal Cost { get; set; }
+
+        public List<LinkedOrderDetailDto> LinkedOrderDetails { get; set; }
     }
 }

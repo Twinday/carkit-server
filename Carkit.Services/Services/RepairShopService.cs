@@ -6,6 +6,7 @@ using Carkit.Services.DtoModels;
 using Carkit.Services.SearchModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,8 @@ namespace Carkit.Services.Services
     public interface IRepairShopService : IBaseService<RepairShop, RepairShopDto, int>
     {
         Task<bool> CanAdd(RepairShopDto item);
+
+        Task<List<string>> GetFreeTime(int repairShopId/*, List<int> detailIds*/);
     }
 
     /// <summary>
@@ -24,8 +27,23 @@ namespace Carkit.Services.Services
     /// </summary>
     public class RepairShopService : BaseService<RepairShop, RepairShopDto>, IRepairShopService
     {
-        public RepairShopService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+        private readonly ITimeService _timeService;
+
+        public RepairShopService(IUnitOfWork unitOfWork, IMapper mapper, ITimeService timeService) : base(unitOfWork, mapper)
         {
+            _timeService = timeService;
+        }
+
+        public async Task<List<string>> GetFreeTime(int repairShopId/*, List<int> detailIds*/)
+        {
+            var repairShop = (await _repository.GetAsync(x => x.Id == repairShopId)).Items?.FirstOrDefault();
+
+            return _timeService.GetPeriodForDay(repairShop.Orders);
+        }
+
+        private async Task GetBusyTime()
+        {
+
         }
 
         public async Task<bool> CanAdd(RepairShopDto item)

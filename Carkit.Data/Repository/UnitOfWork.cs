@@ -25,6 +25,9 @@ namespace Carkit.Data.Repository
             if (typeof(TEntity) == typeof(CarCard))
                 return ((IRepository<TEntity>)new CarCardRepository(_context));
 
+            if (typeof(TEntity) == typeof(RepairShop))
+                return ((IRepository<TEntity>)new RepairShopRepository(_context));
+
 
             return base.GetRepositoryInstance<TEntity>();
         }

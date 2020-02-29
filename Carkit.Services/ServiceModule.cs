@@ -19,6 +19,9 @@ namespace Carkit.Services
 			services.AddScoped<ICarCardService, CarCardService>();
 			services.AddScoped<IRecomendedWorkService, RecomendedWorkService>();
 			services.AddScoped<IOrderService, OrderService>();
+			services.AddScoped<IUnitService, UnitService>();
+
+			services.AddScoped<ITimeService, TimeService>();
 
 			services.AddAutoMapper(typeof(MappingProfile));
 

@@ -21,6 +21,11 @@ namespace Carkit.Services.DtoModels
         public int DetailId { get; set; }
 
         /// <summary>
+        /// Название детали.
+        /// </summary>
+        public string DetailName { get; set; }
+
+        /// <summary>
         /// Количество.
         /// </summary>
         public double Count { get; set; }
@@ -29,6 +34,11 @@ namespace Carkit.Services.DtoModels
         /// Идентификатор единицы измерения.
         /// </summary>
         public int UnitId { get; set; }
+
+        /// <summary>
+        /// Название единицы измерения.
+        /// </summary>
+        public string UnitName { get; set; }
 
         //public string Status { get; set; }
     }

@@ -19,6 +19,8 @@ namespace Carkit.Services
             OrderMap();
             CarMap();
             RecomendedWork();
+
+            CreateMap<Unit, Unit>();
         }
 
         private void RepairShopMap()
@@ -40,7 +42,9 @@ namespace Carkit.Services
             CreateMap<Detail, DetailListView>()
                 .ForMember(q => q.ModelCarIds, o => o.MapFrom(s => s.LinkedDetails.Select(e => e.ModelCarId)));
 
-            CreateMap<LinkedOrderDetail, LinkedOrderDetailDto>();
+            CreateMap<LinkedOrderDetail, LinkedOrderDetailDto>()
+                .ForMember(q => q.DetailName, o => o.Ignore())
+                .ForMember(q => q.UnitName, o => o.Ignore());
             CreateMap<LinkedOrderDetailDto, LinkedOrderDetail>();
         }
 

@@ -27,6 +27,12 @@ namespace Carkit.Web.Controllers
             _localizer = localizer;
         }
 
+        [HttpGet("Time/{id}")]
+        public async Task<ActionResult<List<string>>> GetFreeTime(int id)
+        {
+            return await _service.GetFreeTime(id);
+        }
+
         // GET: api/RepairShops
         /// <summary>
         /// Поиск автомастерских.
