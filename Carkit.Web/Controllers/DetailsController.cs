@@ -27,6 +27,17 @@ namespace Carkit.Web.Controllers
             _localizer = localizer;
         }
 
+        /// <summary>
+        /// Получение периода обслуживания авто.
+        /// </summary>
+        /// <param name="searchData">Параметры поиска.</param>
+        /// <returns>Время в часах.</returns>
+        [HttpGet("TimePeriod")]
+        public async Task<ActionResult<double>> GetTimePeriod([FromQuery] TimePeriodSearchData searchData)
+        {
+            return await _service.GetTimePeriod(searchData.Details, searchData.ModelCarId);
+        }
+
         // GET: api/Details
         [HttpGet]
         public async Task<ActionResult<SearchResult<DetailDto>>> Get([FromQuery] SearchData search)

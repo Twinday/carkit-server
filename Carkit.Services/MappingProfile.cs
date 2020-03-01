@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Carkit.Data.Models;
 using Carkit.Services.DtoModels;
+using Carkit.Services.DtoModels.Auth;
 using Carkit.Services.DtoModels.Work;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Carkit.Services
             OrderMap();
             CarMap();
             RecomendedWork();
+            UserMap();
 
             CreateMap<Unit, Unit>();
         }
@@ -70,6 +72,9 @@ namespace Carkit.Services
             CreateMap<CarCard, CarCardView>()
                 .ForMember(q => q.Name, o => o.MapFrom(s => s.Model.Name))
                 .ForMember(q => q.Producer, o => o.MapFrom(s => s.Model.Producer.Name));
+
+            CreateMap<Car, CarDto>();
+            CreateMap<CarDto, Car>();
         }
 
         private void RecomendedWork()
@@ -79,6 +84,15 @@ namespace Carkit.Services
 
             CreateMap<LinkedWorkForCarWork, RecomendedWorkDto>();
             CreateMap<RecomendedWorkDto, LinkedWorkForCarWork>();
+        }
+
+        private void UserMap()
+        {
+            //TO DO: Сделать генерацию пароля вместо "123".
+            CreateMap<User, UserDto>();
+            CreateMap<UserDto, User>()
+                .ForMember(q => q.RoleId, o => o.MapFrom(s => s.RoleId == null ? 2 : s.RoleId))
+                .ForMember(q => q.Password, o => o.MapFrom(s => s.Password == null || s.Password == string.Empty ? "123" : s.Password));
         }
     }
 }

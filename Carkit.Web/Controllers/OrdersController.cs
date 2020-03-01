@@ -85,7 +85,8 @@ namespace Carkit.Web.Controllers
 
             order.Id = await _service.AddAsync(order);
 
-            return CreatedAtAction("Get", new { id = order.Id }, order);
+            //return CreatedAtAction("Get", new { id = order.Id }, order);
+            return order;
         }
 
         // DELETE: api/Orders/5

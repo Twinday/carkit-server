@@ -16,6 +16,11 @@ namespace Carkit.Services.DtoModels.Work
         public string Name { get; set; }
 
         /// <summary>
+        /// Стоимость.
+        /// </summary>
+        public decimal Cost { get; set; }
+
+        /// <summary>
         /// Идентификаторы авто, к которым подходит деталь.
         /// </summary>
         public List<int> ModelCarIds { get; set; }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Carkit.Services.DtoModels;
-using Carkit.Services.SearchModels;
 using Carkit.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,31 +11,36 @@ namespace Carkit.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarCardsController : ControllerBase
+    public class CarsController : ControllerBase
     {
-        private readonly ICarCardService _service;
-        public CarCardsController(ICarCardService service)
+        private readonly ICarService _service;
+        public CarsController(ICarService service)
         {
             _service = service;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<SearchResult<CarCardView>>> Get([FromQuery] SearchData search)
+        [HttpPost]
+        public async Task<ActionResult<CarDto>> Post([FromBody] CarDto car)
         {
-            return await _service.SearchAsync<CarCardView>(search);
+            car.Id = 0;
+
+            car.Id = await _service.AddAsync(car);
+
+            //return CreatedAtAction("Get", new { id = user.Id }, user);
+            return car;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] WorkDto work)
+        public async Task<IActionResult> Put(int id, [FromBody] CarDto car)
         {
-            if (id != work.Id)
+            if (id != car.Id)
             {
                 return BadRequest();
             }
 
             if (await _service.Exists(id))
             {
-                await _service.UpdateAsync(work);
+                await _service.UpdateAsync(car);
             }
             else
             {

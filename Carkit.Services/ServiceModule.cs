@@ -20,6 +20,8 @@ namespace Carkit.Services
 			services.AddScoped<IRecomendedWorkService, RecomendedWorkService>();
 			services.AddScoped<IOrderService, OrderService>();
 			services.AddScoped<IUnitService, UnitService>();
+			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<ICarService, CarService>();
 
 			services.AddScoped<ITimeService, TimeService>();
 
