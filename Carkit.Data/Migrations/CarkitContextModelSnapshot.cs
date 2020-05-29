@@ -326,6 +326,8 @@ namespace Carkit.Data.Migrations
 
                     b.Property<int>("RepairShopId");
 
+                    b.Property<int>("Status");
+
                     b.Property<double>("TimePeriod");
 
                     b.HasKey("Id");
@@ -430,7 +432,7 @@ namespace Carkit.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "Какая-то адресс",
+                            Address = "Автомастерская1",
                             IsDeleted = false
                         });
                 });

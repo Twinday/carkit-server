@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carkit.Data.Migrations
 {
     [DbContext(typeof(CarkitContext))]
-    [Migration("20200224224057_Init")]
-    partial class Init
+    [Migration("20200519180807_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -328,6 +328,8 @@ namespace Carkit.Data.Migrations
 
                     b.Property<int>("RepairShopId");
 
+                    b.Property<int>("Status");
+
                     b.Property<double>("TimePeriod");
 
                     b.HasKey("Id");
@@ -432,7 +434,7 @@ namespace Carkit.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "Какая-то адресс",
+                            Address = "Автомастерская1",
                             IsDeleted = false
                         });
                 });

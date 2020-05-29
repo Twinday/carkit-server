@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Carkit.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -314,7 +314,8 @@ namespace Carkit.Data.Migrations
                     RepairShopId = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     TimePeriod = table.Column<double>(nullable: false),
-                    Cost = table.Column<decimal>(nullable: false)
+                    Cost = table.Column<decimal>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -412,7 +413,7 @@ namespace Carkit.Data.Migrations
             migrationBuilder.InsertData(
                 table: "RepairShops",
                 columns: new[] { "Id", "Address", "IsDeleted" },
-                values: new object[] { 1, "Какая-то адресс", false });
+                values: new object[] { 1, "Автомастерская1", false });
 
             migrationBuilder.InsertData(
                 table: "Roles",

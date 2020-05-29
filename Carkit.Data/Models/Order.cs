@@ -4,6 +4,11 @@ using System.Text;
 
 namespace Carkit.Data.Models
 {
+    public enum OrderStatus
+    {
+        Created,
+        Agreed,
+    }
     /// <summary>
     /// Заказ.
     /// </summary>
@@ -34,7 +39,10 @@ namespace Carkit.Data.Models
         /// </summary>
         public decimal Cost { get; set; }
 
-        //public string Status { get; set; }
+        /// <summary>
+        /// Статус.
+        /// </summary>
+        public OrderStatus Status { get; set; }
 
         /// <summary>
         /// Авто.

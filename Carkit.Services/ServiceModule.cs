@@ -23,6 +23,12 @@ namespace Carkit.Services
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<ICarService, CarService>();
 
+			services.AddScoped<IVINService, VINService>();
+			services.AddHttpClient("VINClient", c =>
+			{
+				c.BaseAddress = new System.Uri($"https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvaluesextended/");
+			});
+
 			services.AddScoped<ITimeService, TimeService>();
 
 			services.AddAutoMapper(typeof(MappingProfile));

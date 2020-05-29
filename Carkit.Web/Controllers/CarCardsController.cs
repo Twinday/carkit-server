@@ -26,6 +26,12 @@ namespace Carkit.Web.Controllers
             return await _service.SearchAsync<CarCardView>(search);
         }
 
+        [HttpPost("VIN/{vin}")]
+        public async Task<ActionResult<CarCardView>> ParseVIN(string vin)
+        {
+            return await _service.ParseVIN(vin);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] WorkDto work)
         {

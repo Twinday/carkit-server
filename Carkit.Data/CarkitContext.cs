@@ -228,7 +228,7 @@ namespace Carkit.Data
             modelBuilder.Entity<RepairShop>()
                 .HasData(new[]
                 { 
-                    new RepairShop { Id = 1, IsDeleted = false, Address = "Какая-то адресс" }
+                    new RepairShop { Id = 1, IsDeleted = false, Address = "Автомастерская1" }
                 });
 
             modelBuilder.Entity<ProducerDetails>()
